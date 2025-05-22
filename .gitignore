@@ -11,6 +11,7 @@ ENV/
 env/
 ENV.bak/
 venv.bak/
+AlphaEvolve
 
 # Distribution / packaging
 .Python
