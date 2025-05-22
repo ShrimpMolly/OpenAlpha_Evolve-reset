@@ -8,9 +8,9 @@ FLASH_API_KEY = os.getenv("FLASH_API_KEY")
 FLASH_BASE_URL = os.getenv("FLASH_BASE_URL", None)
 FLASH_MODEL = os.getenv("FLASH_MODEL")
 
-# PRO_API_KEY = os.getenv("PRO_API_KEY")
-# PRO_BASE_URL = os.getenv("PRO_BASE_URL", None)
-# PRO_MODEL = os.getenv("PRO_MODEL")
+PRO_API_KEY = os.getenv("PRO_API_KEY")
+PRO_BASE_URL = os.getenv("PRO_BASE_URL", None)
+PRO_MODEL = os.getenv("PRO_MODEL")
 
 EVALUATION_API_KEY = os.getenv("EVALUATION_API_KEY")
 EVALUATION_BASE_URL = os.getenv("EVALUATION_BASE_URL", None)
@@ -24,16 +24,17 @@ LITELLM_TEMPERATURE = os.getenv("LITELLM_TEMPERATURE")
 LITELLM_TOP_P = os.getenv("LITELLM_TOP_P")
 LITELLM_TOP_K = os.getenv("LITELLM_TOP_K")
 
-# if not PRO_API_KEY:
-#     print("Warning: PRO_API_KEY not found in .env or environment. Using a NON-FUNCTIONAL placeholder. Please create a .env file with your valid API key.")
-#     PRO_API_KEY = "Your API key"
+if not PRO_API_KEY:
+    print("Warning: PRO_API_KEY not found in .env or environment. Using a NON-FUNCTIONAL placeholder. Please create a .env file with your valid API key.")
+    PRO_API_KEY = "Your API key"
 
 # Evolutionary Algorithm Settings
 POPULATION_SIZE = 5
 GENERATIONS = 2
 # Threshold for switching to bug-fix prompt
 # If a program has errors and its correctness score is below this, a bug-fix prompt will be used.
-BUG_FIX_CORRECTNESS_THRESHOLD = float(os.getenv("BUG_FIX_CORRECTNESS_THRESHOLD", "0.1"))
+BUG_FIX_CORRECTNESS_THRESHOLD = float(
+    os.getenv("BUG_FIX_CORRECTNESS_THRESHOLD", "0.1"))
 ELITISM_COUNT = 1
 MUTATION_RATE = 0.7
 CROSSOVER_RATE = 0.2
@@ -51,7 +52,8 @@ EVALUATION_TIMEOUT_SECONDS = 800
 
 # Docker Execution Settings
 DOCKER_IMAGE_NAME = os.getenv("DOCKER_IMAGE_NAME", "code-evaluator:latest")
-DOCKER_NETWORK_DISABLED = os.getenv("DOCKER_NETWORK_DISABLED", "True").lower() == "true"
+DOCKER_NETWORK_DISABLED = os.getenv(
+    "DOCKER_NETWORK_DISABLED", "True").lower() == "true"
 
 DATABASE_TYPE = "in_memory"
 DATABASE_PATH = "program_database.json"
@@ -70,6 +72,7 @@ RL_MODEL_PATH = "rl_finetuner_model.pth"
 
 MONITORING_DASHBOARD_URL = "http://localhost:8080"
 
+
 def get_setting(key, default=None):
     """
     Retrieves a setting value.
@@ -77,6 +80,7 @@ def get_setting(key, default=None):
     otherwise falls back to a secondary/default if defined.
     """
     return globals().get(key, default)
+
 
 def get_llm_model(model_type="default"):
     if model_type == "default":
@@ -86,8 +90,7 @@ def get_llm_model(model_type="default"):
         # If FLASH_MODEL is also meant to be covered by litellm's general handling,
         # this could also return LITELLM_DEFAULT_MODEL or a specific flash model string.
         # For now, keep FLASH_MODEL if it's distinct.
-        return FLASH_MODEL if FLASH_MODEL else LITELLM_DEFAULT_MODEL # Return default if FLASH_MODEL is not set
+        # Return default if FLASH_MODEL is not set
+        return FLASH_MODEL if FLASH_MODEL else LITELLM_DEFAULT_MODEL
     # Fallback for any other model_type not explicitly handled
     return LITELLM_DEFAULT_MODEL
-
-                                 
