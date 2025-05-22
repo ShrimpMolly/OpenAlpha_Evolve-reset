@@ -45,11 +45,7 @@ class CodeGeneratorAgent(CodeGeneratorInterface):
 
 I need you to provide your changes as a sequence of diff blocks in the following format:
 
-<<<<<<< SEARCH
 # Original code block to be found and replaced (COPY EXACTLY from original)
-=======
-# New code block to replace the original
->>>>>>> REPLACE
 
 IMPORTANT DIFF GUIDELINES:
 1. The SEARCH block MUST be an EXACT copy of code from the original - match whitespace, indentation, and line breaks precisely
@@ -60,13 +56,6 @@ IMPORTANT DIFF GUIDELINES:
 6. Pay special attention to matching the exact original indentation of the code in your SEARCH block, as this is crucial for correct application in environments sensitive to indentation (like Python).
 
 Example of a good diff:
-<<<<<<< SEARCH
-def calculate_sum(numbers):
-    result = 0
-    for num in numbers:
-        result += num
-    return result
-=======
 def calculate_sum(numbers):
     if not numbers:
         return 0
@@ -74,7 +63,6 @@ def calculate_sum(numbers):
     for num in numbers:
         result += num
     return result
->>>>>>> REPLACE
 
 Make sure your diff can be applied correctly!
 '''
