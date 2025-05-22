@@ -350,24 +350,14 @@ End of block
 Final line"""
 
         diff = """Some preamble text from LLM...
-<<<<<<< SEARCH
-Line 2 to be replaced
-=======
 Line 2 has been successfully replaced
->>>>>>> REPLACE
 
 Some other text...
 
-<<<<<<< SEARCH
-Another block
-To be changed
-End of block
-=======
 This
 Entire
 Block
 Is New
->>>>>>> REPLACE
 Trailing text..."""
         expected_output = """Line 1
 Line 2 has been successfully replaced
