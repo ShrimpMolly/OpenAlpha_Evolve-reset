@@ -17,7 +17,7 @@ EVALUATION_BASE_URL = os.getenv("EVALUATION_BASE_URL", None)
 EVALUATION_MODEL = os.getenv("EVALUATION_MODEL")
 
 # LiteLLM Configuration
-LITELLM_DEFAULT_MODEL = os.getenv("LITELLM_DEFAULT_MODEL", None)
+LITELLM_DEFAULT_MODEL = os.getenv("LITELLM_DEFAULT_MODEL", "gpt-3.5-turbo")
 LITELLM_DEFAULT_BASE_URL = os.getenv("LITELLM_DEFAULT_BASE_URL", None)
 LITELLM_MAX_TOKENS = os.getenv("LITELLM_MAX_TOKENS")
 LITELLM_TEMPERATURE = os.getenv("LITELLM_TEMPERATURE")
@@ -38,6 +38,9 @@ BUG_FIX_CORRECTNESS_THRESHOLD = float(
 ELITISM_COUNT = 1
 MUTATION_RATE = 0.7
 CROSSOVER_RATE = 0.2
+
+# Primary optimization objective: 'correctness' or 'runtime_ms'
+PRIMARY_OBJECTIVE = os.getenv("PRIMARY_OBJECTIVE", "runtime_ms")
 
 # Island Model Settings
 NUM_ISLANDS = 4  # Number of subpopulations

@@ -320,7 +320,7 @@ with gr.Blocks(title="OpenAlpha_Evolve") as demo:
                 generations = gr.Slider(
                     label="Generations",
                     minimum=1,
-                    maximum=5,
+                    maximum=20,
                     value=2,
                     step=1
                 )

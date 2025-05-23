@@ -26,6 +26,12 @@ ENV PYTHONUNBUFFERED=1
 #    # numpy==1.23.5
 #    # pandas==1.5.3
 
+# Install Docker CLI for running Docker commands inside the container
+RUN apt-get update && apt-get install -y docker.io && rm -rf /var/lib/apt/lists/*
+
+# Note: To allow this container to run Docker commands, run it with:
+#   docker run -v /var/run/docker.sock:/var/run/docker.sock ...
+
 # The default command can be omitted if the command is always specified during `docker run`
 # For example, `python temp_script.py` will be the command passed by the EvaluatorAgent.
 # CMD ["python"]
